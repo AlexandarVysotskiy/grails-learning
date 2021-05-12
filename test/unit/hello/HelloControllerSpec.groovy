@@ -9,13 +9,14 @@ import spock.lang.Specification
 @TestFor(HelloController)
 class HelloControllerSpec extends Specification {
 
-    def setup() {
-    }
-
-    def cleanup() {
+    static doWithSpring = {
+        simpleService SimpleService
     }
 
     void "indexTest"() {
+        given:
+        controller.request.parameters = ['hello': 'hello']
+
         when:
         controller.index()
 

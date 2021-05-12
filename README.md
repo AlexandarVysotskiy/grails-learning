@@ -1,1 +1,1 @@
-# grails-learning
+# grails-com.learning
