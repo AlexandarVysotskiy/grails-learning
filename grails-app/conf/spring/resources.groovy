@@ -1,3 +1,7 @@
-// Place your Spring DSL code here
+import com.learning.MyFirstBeanImpl
+
 beans = {
+    myFirstBean(MyFirstBeanImpl) {
+        prefix = 'just-prefix'
+    }
 }
