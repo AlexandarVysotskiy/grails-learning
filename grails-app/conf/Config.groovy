@@ -118,13 +118,3 @@ log4j.main = {
             'grails.app.domain',
             'grails.app.services'
 }
-
-dataSource {
-    pooled = true
-    dbCreate = "update"
-    url = "jdbc:mysql://localhost:3306/grails_db"
-    driverClassName = "com.mysql.jdbc.Driver"
-    dialect = org.hibernate.dialect.MySQL5InnoDBDialect
-    username = "root"
-    password = "password"
-}
