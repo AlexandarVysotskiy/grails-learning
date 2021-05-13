@@ -1,12 +1,3 @@
-dataSource {
-    pooled = true
-    dbCreate = "update"
-    url = "jdbc:mysql://localhost:3306/grails_db"
-    driverClassName = "com.mysql.jdbc.Driver"
-    dialect = org.hibernate.dialect.MySQL5InnoDBDialect
-    username = "root"
-    password = "password"
-}
 hibernate {
     cache.use_second_level_cache = true
     cache.use_query_cache = false
@@ -28,17 +19,6 @@ environments {
         dataSource {
             dbCreate = "update"
             url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
-        }
-    }
-    production {
-        dataSource {
-            pooled = true
-            dbCreate = "update"
-            url = "jdbc:mysql://localhost:3306/grails_db"
-            driverClassName = "com.mysql.jdbc.Driver"
-            dialect = org.hibernate.dialect.MySQL5InnoDBDialect
-            username = "root"
-            password = "password"
         }
     }
 }
