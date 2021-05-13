@@ -97,7 +97,6 @@ environments {
 
 // log4j configuration
 log4j.main = {
-//
 
 
     error 'org.codehaus.groovy.grails.web.servlet',        // controllers
@@ -116,4 +115,3 @@ log4j.main = {
             'grails.app.domain',
             'grails.app.services'
 }
-
