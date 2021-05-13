@@ -97,10 +97,10 @@ environments {
 
 // log4j configuration
 log4j.main = {
-//
-//    appenders {
-//        console name: 'stdout', layout: pattern(conversionPattern: '%c{2} %m%n')
-//    }
+
+    appenders {
+        console name: 'stdout', layout: pattern(conversionPattern: '%c{2} %m%n')
+    }
 
     error 'org.codehaus.groovy.grails.web.servlet',        // controllers
             'org.codehaus.groovy.grails.web.pages',          // GSP
@@ -119,12 +119,12 @@ log4j.main = {
             'grails.app.services'
 }
 
-//dataSource {
-//    pooled = true
-//    dbCreate = "update"
-//    url = "jdbc:mysql://localhost:3306/grails_db"
-//    driverClassName = "com.mysql.jdbc.Driver"
-//    dialect = org.hibernate.dialect.MySQL5InnoDBDialect
-//    username = "root"
-//    password = "password"
-//}
+dataSource {
+    pooled = true
+    dbCreate = "update"
+    url = "jdbc:mysql://localhost:3306/grails_db"
+    driverClassName = "com.mysql.jdbc.Driver"
+    dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+    username = "root"
+    password = "password"
+}
