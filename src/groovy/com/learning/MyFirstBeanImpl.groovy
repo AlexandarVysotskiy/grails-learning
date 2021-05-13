@@ -1,6 +1,6 @@
-package com.learning
-
-class MyFirstBeanImpl {
-
-    def prefix = ''
-}
+//package com.learning
+//
+//class MyFirstBeanImpl {
+//
+//    def prefix = ''
+//}

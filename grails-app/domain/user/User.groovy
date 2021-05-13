@@ -1,7 +1,7 @@
-package user
-
-class User {
-
-    static constraints = {
-    }
-}
+//package user
+//
+//class User {
+//
+//    static constraints = {
+//    }
+//}
