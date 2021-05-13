@@ -31,7 +31,10 @@
 
 # "temporary" build files
 /target
-.idea/
+.idea
+/**/*.iml
+/*.ipr
+/*.iws
 .slcache/
 lib/
 out/
