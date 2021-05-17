@@ -9,9 +9,24 @@ class ShowMessageController {
 
         def input = params.digitalInput
 
-        log.info("input ${input}")
+        if (input) {
 
-        [digit : "input ${RCU.getLocale(request) == 'en' ? input.replaceAll("", ".") : input.replaceAll("", ",")}",
-         locale: "${RCU.getLocale(request)}"]
+            log.info("input ${input}")
+
+            [digit : "input ${RCU.getLocale(request) == 'en' ? input.replaceAll("", ".") : input.replaceAll("", ",")}",
+             locale: "${RCU.getLocale(request)}"]
+        }
+    }
+
+    def changeLanguage() {
+        log.info('Change language')
+
+        if (RCU.getLocale(request) == Locale.ENGLISH) {
+            session['org.springframework.web.servlet.i18n.SessionLocaleResolver.LOCALE'] = Locale.GERMANY
+        } else {
+            session['org.springframework.web.servlet.i18n.SessionLocaleResolver.LOCALE'] = Locale.ENGLISH
+        }
+
+        redirect(uri: "/showMessage")
     }
 }

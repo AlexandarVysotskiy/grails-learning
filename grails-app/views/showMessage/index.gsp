@@ -5,6 +5,11 @@
 </head>
 
 <body>
+
+<g:link controller="showMessage" action="changeLanguage">
+    <button type="button">${message(code: 'change.language')}</button>
+</g:link>
+
 <h1>
     <div>
         ${digit}
