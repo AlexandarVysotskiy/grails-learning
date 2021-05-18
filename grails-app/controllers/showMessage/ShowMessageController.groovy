@@ -1,21 +1,40 @@
 package showMessage
 
 import org.springframework.web.servlet.support.RequestContextUtils as RCU
+import third.Message
+
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
 
 class ShowMessageController {
 
+    Message message
+
     def index() {
-        log.info("RCU.getLocale(request) ${RCU.getLocale(request)}")
+        message = new Message("First")
 
-        def input = params.digitalInput
+        [message: message]
+    }
 
-        if (input) {
+    def inputDigit(Message message) {
+        if (message.digit) {
 
-            log.info("input ${input}")
+            log.info('message.digit ' + message.digit)
 
-            [digit : "input ${RCU.getLocale(request) == 'en' ? input.replaceAll("", ".") : input.replaceAll("", ",")}",
-             locale: "${RCU.getLocale(request)}"]
+            DecimalFormatSymbols decimalFormatSymbols = new DecimalFormatSymbols()
+
+            if (RCU.getLocale(request) == Locale.ENGLISH) {
+                decimalFormatSymbols.setDecimalSeparator('.' as char)
+                message.setText(new DecimalFormat("##0.000", decimalFormatSymbols)
+                        .format(message.getDigit()))
+            } else {
+                decimalFormatSymbols.setDecimalSeparator(',' as char)
+                message.setText(new DecimalFormat("##0,000", decimalFormatSymbols)
+                        .format(message.getDigit()))
+            }
         }
+
+        render(view: "index", model: [message: message])
     }
 
     def changeLanguage() {

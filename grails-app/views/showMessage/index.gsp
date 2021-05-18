@@ -23,10 +23,14 @@
         <g:message code="good.morning"/>
     </div>
 
-    <g:form>
-        <g:textField name="digitalInput" value="${digitalInput}">
-
-        </g:textField>
+    <g:form controller="showMessage" action="inputDigit">
+        <div class="form-group">
+            <label>Before convert: ${message?.text}</label>
+            <g:textField name="text" value="${message.text}"/>
+            <label>After convert: ${message?.digit}</label>
+            <g:textField name="digit" value="${message.digit}"/>
+        </div>
+        <g:submitButton name="messageSent"/>
     </g:form>
 </h1>
 </body>
