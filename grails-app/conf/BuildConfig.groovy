@@ -33,7 +33,7 @@ grails.project.dependency.resolution = {
     checksums true // Whether to verify checksums on resolve
     legacyResolve false // whether to do a secondary resolve on plugin installation, not advised and here for backwards compatibility
 
-    pom true
+    pom false
 
     repositories {
         inherits true // Whether to inherit repository definitions from plugins
