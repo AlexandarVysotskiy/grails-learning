@@ -30,4 +30,9 @@ class LoginController {
             render(view: "index", model: [message: "User not found"])
         }
     }
+
+    def logout() {
+        session.user = null
+        render(view: "index", model: [message: "User not found"])
+    }
 }

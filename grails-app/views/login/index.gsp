@@ -17,10 +17,10 @@
             <g:textField name="password"/>
 
             <g:submitButton name="search"/>
-
-            <label ${message}></label>
         </div>
     </g:form>
+
+    <label>${message}</label>
 </div>
 </body>
 </html>

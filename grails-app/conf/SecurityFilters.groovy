@@ -8,12 +8,14 @@ class SecurityFilters {
                     return false
                 }
             }
-//            after = { Map model ->
-//
-//            }
-//            afterView = { Exception e ->
-//
-//            }
+
+            after = { Map model ->
+                log.info('After: ' + model)
+            }
+
+            afterView = { Exception e ->
+                log.error('afterView error', e)
+            }
         }
     }
 }
