@@ -11,10 +11,22 @@
     <g:form controller="user" action="index">
         <label>Input user's name:</label>
 
+        <g:hasErrors bean="${userCommand}">
+            <ul>
+                <g:eachError var="err" bean="${userCommand}">
+                    <li>${err}</li>
+                </g:eachError>
+            </ul>
+        </g:hasErrors>
+
         <div class="form-group">
             <g:textField name="userName"/>
 
             <g:textField name="pokemonName"/>
+
+            <g:textField name="from"/>
+
+            <g:textField name="to"/>
 
             <g:submitButton name="search"/>
         </div>
@@ -27,10 +39,12 @@
         </g:each>
     </g:form>
 
-    <div class="pagination">
-        <g:paginate controller="user" action="index"
-                    max="5" total="${userCount}"/>
-    </div>
+    <g:if test="${users}">
+        <div class="pagination">
+            <g:paginate controller="user" action="index"
+                        max="5" total="${userCount}"/>
+        </div>
+    </g:if>
 </div>
 </body>
 </html>

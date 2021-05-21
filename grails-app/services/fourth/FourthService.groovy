@@ -1,5 +1,6 @@
 package fourth
 
+import com.learning.command_objects.user.UserCommand
 import grails.gorm.PagedResultList
 import grails.transaction.Transactional
 import org.grails.datastore.mapping.query.api.BuildableCriteria
@@ -15,7 +16,35 @@ class FourthService {
         return null
     }
 
+    void checkInputDate(UserCommand userCommand) {
+        if (!userCommand.from || !userCommand.to) {
+            userCommand.errors.reject(
+                    'Incorecte date',
+                    'From and To cannot be empty'
+            )
+
+            return
+        }
+
+        if (userCommand.from.after(userCommand.to)) {
+            userCommand.errors.reject(
+                    'Incorecte date',
+                    'Date From must be after To date'
+            )
+
+            return
+        }
+
+        if (userCommand.to.after(new Date())) {
+            userCommand.errors.reject(
+                    'Incorecte date',
+                    'Date cannot be from future'
+            )
+        }
+    }
+
     PagedResultList findUsersByNameAndPokemons(String userName, String pokemonName,
+                                               Date fromDate, Date toDate,
                                                int max, int offset) {
         BuildableCriteria bc = User.createCriteria()
         bc.list(max: max, offset: offset) {
@@ -24,6 +53,8 @@ class FourthService {
                         ? userName.replace(userName[userName.length() - 1], '%')
                         : userName)
             }
+
+            between("birthday", fromDate, toDate)
 
             if (pokemonName) {
                 pokemons {

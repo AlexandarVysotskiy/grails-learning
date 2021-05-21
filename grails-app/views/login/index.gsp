@@ -16,7 +16,7 @@
 
             <g:textField name="password"/>
 
-            <g:submitButton name="search"/>
+            <g:submitButton name="enter"/>
         </div>
     </g:form>
 
