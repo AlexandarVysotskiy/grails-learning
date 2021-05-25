@@ -54,7 +54,7 @@ class FourthService {
                         : userName)
             }
 
-            between("birthday", fromDate, toDate)
+//            between("birthday", fromDate, toDate)
 
             if (pokemonName) {
                 pokemons {
@@ -69,6 +69,7 @@ class FourthService {
     void initUsersAndPokemons() {
         if (User.count == 0) {
             User nick = new User('Nick', '123', new Date())
+            User nickola = new User('Nickola', '123', new Date())
             User nickolas = new User('Nickolas', '123', new Date().plus(6000))
             User natalia = new User('Natalia', '123', new Date().plus(7000))
             User mike = new User('Mike', '123', new Date().minus(1000))
@@ -90,6 +91,7 @@ class FourthService {
             Pokemon fifth = new Pokemon('Fifth')
 
             addPokemonToUser(nick, first)
+            addPokemonToUser(nickola, first)
             addPokemonToUser(nickolas, fourth)
             addPokemonToUser(natalia, first)
             addPokemonToUser(mike, second)
@@ -97,6 +99,7 @@ class FourthService {
             addPokemonToUser(alena, fourth)
             addPokemonToUser(alena, first)
             addPokemonToUser(nick, second)
+            addPokemonToUser(nickola, second)
             addPokemonToUser(alena, third)
             addPokemonToUser(mike, third)
             addPokemonToUser(peter, first)

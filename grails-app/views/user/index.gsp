@@ -4,47 +4,51 @@
     <title>User list</title>
     <meta name="layout" content="headerFooter"/>
     <asset:stylesheet src="application.css"/>
+    <g:javascript library="jquery" plugin='jquery'/>
+
+    <script type="text/javascript">
+      function sendSearchDataToController() {
+
+        var formData = {
+          userName: $('#userName').val(),
+          pokemonName: $('#pokemonName').val(),
+          from: $('#from').val(),
+          to: $('#to').val()
+        };
+
+        $.ajax({
+          url: "${g.createLink( controller: 'user', action:'search')}",
+          type: "post",
+          data: formData,
+          success: function (data) {
+            console.log('data', data);
+
+            $('#resultDiv').html(data)
+          },
+          error: function (data) {
+            console.log('Error', data);
+            $("#resultDiv").addClass('alert alert-danger').append('Error saving event')
+          }
+        });
+      }
+    </script>
 </head>
 
 <body onload="">
 <div class="content scaffold-list">
-    <g:form controller="user" action="index">
-        <label>Input user's name:</label>
 
-        <g:hasErrors bean="${userCommand}">
-            <ul>
-                <g:eachError var="err" bean="${userCommand}">
-                    <li>${err}</li>
-                </g:eachError>
-            </ul>
-        </g:hasErrors>
+    <form method="post">
+        <input value="${params.userName}" name="userName" id="userName">
+        <input value="${params.pokemonName}" name="pokemonName" id="pokemonName">
+        <input value="${params.from}" name="from" id="from">
+        <input value="${params.to}" name="to" id="to">
 
-        <div class="form-group">
-            <g:textField name="userName"/>
+        <button type="button" onclick="sendSearchDataToController()">Search</button>
+    </form>
 
-            <g:textField name="pokemonName"/>
-
-            <g:textField name="from"/>
-
-            <g:textField name="to"/>
-
-            <g:submitButton name="search"/>
-        </div>
-
-        <g:each var="user" in="${users}">
-            <p>User with name: ${user.name}, has next pokemon(s):</p>
-            <g:each var="pokemon" in="${user.pokemons}">
-                <p>Pokemon name: ${pokemon.name}</p>
-            </g:each>
-        </g:each>
-    </g:form>
-
-    <g:if test="${users}">
-        <div class="pagination">
-            <g:paginate controller="user" action="index"
-                        max="5" total="${userCount}"/>
-        </div>
-    </g:if>
+    <div id="resultDiv">
+        <g:render template="usersTemplate" model="users"/>
+    </div>
 </div>
 </body>
 </html>
