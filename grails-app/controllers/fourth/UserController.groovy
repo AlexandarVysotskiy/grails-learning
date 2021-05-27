@@ -9,7 +9,8 @@ class UserController {
     FourthService fourthService
 
     PagedResultList searchUsers(String userName, String pokemonName,
-                                String from, String to, GrailsParameterMap params, UserCommand userCommand) {
+                                String from, String to, GrailsParameterMap params,
+                                UserCommand userCommand) {
         fourthService.findUsersByNameAndPokemons(
                 userName,
                 pokemonName,
