@@ -3,7 +3,6 @@
 <head>
     <title>An Example Page</title>
     <meta name="layout" content="headerFooter"/>
-    <asset:stylesheet src="application.css"/>
 </head>
 
 <body onload="">

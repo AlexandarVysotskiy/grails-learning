@@ -179,6 +179,7 @@
       <library name="Grails User Library (grails-learning-grailsPlugins)">
         <CLASSES>
           <root url="file://$MAVEN_REPOSITORY$/org/grails/grails-dependencies/2.4.4/grails-dependencies-2.4.4.pom" />
+          <root url="jar://D:/java/zulu8.52.0.23-ca-jdk8.0.282-win_x64/lib/tools.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/jline/jline/2.11/jline-2.11.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-scripts/2.4.4/grails-scripts-2.4.4.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/aether/aether-api/1.0.0.v20140518/aether-api-1.0.0.v20140518.jar!/" />
@@ -188,7 +189,6 @@
           <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jdt/core/compiler/ecj/3.7.1/ecj-3.7.1.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/net/java/dev/jna/jna/4.0.0/jna-4.0.0.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/ant/ant-trax/1.7.1/ant-trax-1.7.1.jar!/" />
-          <root url="jar://D:/java/zulu8.52.0.23-ca-jdk8.0.282-win_x64/lib/tools.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
