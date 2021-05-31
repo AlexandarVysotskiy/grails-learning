@@ -2,10 +2,11 @@
 <html>
 <head>
     <title>User's list</title>
+    <meta name="layout" content="headerFooter"/>
     <asset:stylesheet src="application.css"/>
 </head>
 
-<body>
+<body onload="">
 <div>
     <g:form controller="user" action="addNewUser">
         <g:submitButton value="addNewUser" name="addNewUser"/>

@@ -2,9 +2,10 @@
 <html>
 <head>
     <title>Edit user</title>
+    <meta name="layout" content="headerFooter"/>
 </head>
 
-<body>
+<body onload="">
 <g:form controller="user" action="saveNewUser">
     <g:if test="${user}">
         <g:hiddenField name="userId" value="${user.id}"/>

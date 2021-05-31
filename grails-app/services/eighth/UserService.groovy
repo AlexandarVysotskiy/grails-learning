@@ -7,6 +7,10 @@ import org.grails.datastore.mapping.query.api.BuildableCriteria
 @Transactional
 class UserService {
 
+    NewUser findByLogin(String login) {
+        NewUser.findByLogin(login)
+    }
+
     void removeUser(String userId) {
         NewUser.findById(userId as Long).delete()
     }
