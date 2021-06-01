@@ -7,11 +7,7 @@ class UserController {
 
     FourthService fourthService
 
-    def index(String userName, String pokemonName, String from, String to) {
-        UserCommand userCommand = new UserCommand(from, to)
-
-        fourthService.checkInputDate(userCommand)
-
+    def index(String userName, String pokemonName, UserCommand userCommand) {
         if (userCommand.hasErrors()) {
             return [userCommand: userCommand]
         }

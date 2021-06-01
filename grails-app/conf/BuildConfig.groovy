@@ -23,6 +23,11 @@ grails.project.fork = [
 ]
 
 grails.project.dependency.resolver = "maven" // or ivy
+
+grails.databinding.dateFormats = [
+        'yyyy-MM-dd', 'yyyy-MM-dd HH:mm:ss.S', "yyyy-MM-dd'T'hh:mm:ss'Z'"
+]
+
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
     inherits("global") {
