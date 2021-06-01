@@ -1,20 +1,12 @@
 class SecurityFilters {
 
     def filters = {
-        all(controller:'user', action:'index') {
+        all(controller:'*', action:'*', uriExclude: '/login/index') {
             before = {
-                if (!session.user && actionName != "login") {
+                if (!session.user) {
                     redirect(controller: "login", action: "index")
                     return false
                 }
-            }
-
-            after = { Map model ->
-                log.info('After: ' + model)
-            }
-
-            afterView = { Exception e ->
-                log.error('afterView error', e)
             }
         }
     }

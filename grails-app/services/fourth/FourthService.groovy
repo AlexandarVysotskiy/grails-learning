@@ -4,7 +4,6 @@ import grails.gorm.PagedResultList
 import grails.transaction.Transactional
 import org.grails.datastore.mapping.query.api.BuildableCriteria
 
-@Transactional
 class FourthService {
 
     User findUserByName(String name) {
@@ -79,6 +78,7 @@ class FourthService {
         }
     }
 
+    @Transactional
     void addPokemonToUser(User user, Pokemon pokemon) {
         user.addToPokemons(pokemon).save()
     }

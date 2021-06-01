@@ -9,12 +9,8 @@ class LoginController {
     def index(String login, String password) {
         fourthService.initUsersAndPokemons()
 
-        if (!login) {
-            render(view: "index", model: [message: "Input login please"])
-        }
-
-        if (!password) {
-            render(view: "index", model: [message: "Input password please"])
+        if (!login || !password) {
+            return render(view: "index", model: [message: "Incorrect login or password"])
         }
 
         def u = fourthService.findUserByName(login)
