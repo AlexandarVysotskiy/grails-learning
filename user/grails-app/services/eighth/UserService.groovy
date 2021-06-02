@@ -1,5 +1,6 @@
 package eighth
 
+import com.learning.commandObject.UserCommandObject
 import grails.orm.PagedResultList
 import grails.transaction.Transactional
 import org.grails.datastore.mapping.query.api.BuildableCriteria
@@ -11,60 +12,44 @@ class UserService {
         NewUser.findByLogin(login)
     }
 
-    void removeUser(String userId) {
-        NewUser.findById(userId as Long).delete()
+    void removeUser(NewUser user) {
+        user.delete()
     }
 
     NewUser findUserById(String userId) {
-        NewUser.findById(userId as Long)
+        NewUser.get(userId as Long)
     }
 
-    PagedResultList getAllUsers(int offset, int max) {
-        BuildableCriteria bc = NewUser.createCriteria()
-        bc.list(offset: offset, max: max) {}
-    }
-
-    PagedResultList findUsers(String login, String firstName, String lastName,
+    PagedResultList findUsers(UserCommandObject userCommandShell,
                               int offset, int max) {
         BuildableCriteria bc = NewUser.createCriteria()
         bc.list(offset: offset, max: max) {
-            if (login) {
-                like('login', login + "%")
+            if (userCommandShell.login) {
+                like('login', userCommandShell.login + "%")
             }
 
-            if (firstName) {
-                like('firstName', firstName + "%")
+            if (userCommandShell.firstName) {
+                like('firstName', userCommandShell.firstName + "%")
             }
 
-            if (lastName) {
-                like('lastName', lastName + "%")
+            if (userCommandShell.lastName) {
+                like('lastName', userCommandShell.lastName + "%")
             }
         }
     }
 
-    def saveNewUser(String id, String login, String firstName, String lastName, String password) {
-        if (!id) {
-            new NewUser(login, firstName, lastName, password).save()
+    def saveEditUser(NewUser user) {
+        if (!user.id) {
+            user.save()
         } else {
-            NewUser newUser = NewUser.findById(id as Long)
+            NewUser changeUser = NewUser.get(user.id)
 
-            if (login) {
-                newUser.login = login
-            }
+            changeUser.login = user.login
+            changeUser.firstName = user.firstName
+            changeUser.lastName = user.lastName
+            changeUser.password = user.password
 
-            if (firstName) {
-                newUser.firstName = firstName
-            }
-
-            if (lastName) {
-                newUser.lastName = lastName
-            }
-
-            if (password) {
-                newUser.password = password
-            }
-
-            newUser.save()
+            changeUser.save()
         }
     }
 

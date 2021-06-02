@@ -1,5 +1,6 @@
 package eighth
 
+import com.learning.commandObject.UserCommandObject
 import grails.orm.PagedResultList
 
 class UserController {
@@ -7,40 +8,34 @@ class UserController {
     UserService userService
 
     def index() {
-        userService.initUsers()
+        render(view: 'index')
+    }
 
-        PagedResultList users = userService.getAllUsers(
+    def search(UserCommandObject userCommandShell) {
+        PagedResultList users = userService.findUsers(userCommandShell,
                 params.int('offset', 0),
                 params.int('max', 5))
 
         render(view: 'index', model: [users: users, userTotal: users.totalCount])
     }
 
-    def search(String login, String firstName, String lastName) {
-        PagedResultList users = userService.findUsers(login, firstName, lastName,
-                params.int('offset', 0),
-                params.int('max', 2))
-
-        render(view: 'index', model: [users: users, userTotal: users.totalCount])
-    }
-
     def editUser() {
-        render(view: 'addEditNewUser', model: [user: userService.findUserById(params.get("id"))])
+        render(view: 'addEditUserView', model: [user: userService.findUserById(params.get("id"))])
     }
 
     def addNewUser() {
-        render(view: 'addEditNewUser')
+        render(view: 'addEditUserView')
     }
 
-    def removeUser(String id) {
-        userService.removeUser(id)
+    def removeUser(NewUser user) {
+        userService.removeUser(user)
 
-        redirect(view: 'index')
+        redirect(action: 'index')
     }
 
-    def saveNewUser(String login, String firstName, String lastName, String password) {
-        userService.saveNewUser(params.get('userId'), login, firstName, lastName, password)
+    def saveNewUser(NewUser user) {
+        userService.saveEditUser(user)
 
-        index()
+        redirect(action: 'index')
     }
 }

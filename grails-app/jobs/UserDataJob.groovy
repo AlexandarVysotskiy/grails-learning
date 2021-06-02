@@ -10,16 +10,18 @@ class UserDataJob {
     }
 
     def execute() {
-        println('Job works!!!')
+        int userCount = NewUser.count()
 
-        sendUserInfo(NewUser.findAll())
+        log.info('User count right now ' + userCount)
+
+        sendUserInfo(userCount)
     }
 
-    def sendUserInfo(List<NewUser> list) {
-        mailService.sendMail {
-            to "bestof@list.ru"
-            subject "User data"
-            body "Right now in the app ${list.size()} users"
-        }
+    def sendUserInfo(int userCount) {
+//        mailService.sendMail {
+//            to "bestof@list.ru"
+//            subject "User data"
+//            body "Right now in the app ${userCount} users"
+//        }
     }
 }

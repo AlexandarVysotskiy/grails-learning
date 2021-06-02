@@ -8,7 +8,7 @@
 <body onload="">
 <g:form controller="user" action="saveNewUser">
     <g:if test="${user}">
-        <g:hiddenField name="userId" value="${user.id}"/>
+        <g:hiddenField name="id" value="${user.id}"/>
     </g:if>
 
     <div>
