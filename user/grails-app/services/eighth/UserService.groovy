@@ -20,20 +20,20 @@ class UserService {
         NewUser.get(userId as Long)
     }
 
-    PagedResultList findUsers(UserCommandObject userCommandShell,
+    PagedResultList findUsers(UserCommandObject commandObject,
                               int offset, int max) {
         BuildableCriteria bc = NewUser.createCriteria()
         bc.list(offset: offset, max: max) {
-            if (userCommandShell.login) {
-                like('login', userCommandShell.login + "%")
+            if (commandObject.login) {
+                like('login', commandObject.login + "%")
             }
 
-            if (userCommandShell.firstName) {
-                like('firstName', userCommandShell.firstName + "%")
+            if (commandObject.firstName) {
+                like('firstName', commandObject.firstName + "%")
             }
 
-            if (userCommandShell.lastName) {
-                like('lastName', userCommandShell.lastName + "%")
+            if (commandObject.lastName) {
+                like('lastName', commandObject.lastName + "%")
             }
         }
     }

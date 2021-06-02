@@ -11,8 +11,8 @@ class UserController {
         render(view: 'index')
     }
 
-    def search(UserCommandObject userCommandShell) {
-        PagedResultList users = userService.findUsers(userCommandShell,
+    def search(UserCommandObject commandObject) {
+        PagedResultList users = userService.findUsers(commandObject,
                 params.int('offset', 0),
                 params.int('max', 5))
 
