@@ -1,13 +1,42 @@
-/*
-* This is a manifest file that'll be compiled into application.css, which will include all the files
-* listed below.
-*
-* Any CSS file within this directory can be referenced here using a relative path.
-*
-* You're free to add application-wide styles to this file and they'll appear at the top of the
-* compiled file, but it's generally better to create a new file per style scope.
-*
-*= require main
-*= require mobile
-*= require_self
-*/
+th, td {
+  padding: 0.5rem;
+  text-align: center;
+  alignment: center;
+  width: 16%;
+}
+
+th {
+  font-weight: normal;
+}
+
+tr, th {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+table {
+  width: 80%;
+  border-spacing: 0.5rem;
+}
+
+p {
+  margin: 1rem;
+  color: #f9fffb;
+}
+
+a {
+  color: darkred;
+}
+
+.footer-header-box {
+  border-color: #575759;
+  border-width: 2px;
+  border-style: solid;
+  background: #255b17;
+}
+
+.content-box {
+  margin: 1rem;
+  background: #999999;
+  alignment: center;
+}

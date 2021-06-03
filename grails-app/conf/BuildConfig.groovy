@@ -8,6 +8,9 @@ grails.project.source.level = 1.6
 grails.server.port.http = 8090
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
+grails.plugin.location.login = "./login"
+grails.plugin.location.search = "./search"
+
 grails.project.fork = [
     // configure settings for compilation JVM, note that if you alter the Groovy version forked compilation is required
     //  compile: [maxMemory: 256, minMemory: 64, debug: false, maxPerm: 256, daemon:true],
@@ -65,6 +68,8 @@ grails.project.dependency.resolution = {
 //        compile ":scaffolding:2.1.2"
         compile ':cache:1.1.8'
         compile ":asset-pipeline:1.9.9"
+        compile ':quartz:1.0.2'
+        compile ":mail:1.0.7"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate4:4.3.6.1" // or ":hibernate:3.6.10.18"
