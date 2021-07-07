@@ -1,6 +1,6 @@
 package user
 
-class User {
+class First {
 
     static constraints = {
     }
